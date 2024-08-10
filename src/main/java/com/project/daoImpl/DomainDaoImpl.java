@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.project.dao.DomainDao;
-import com.project.dto.Domain;
+import com.project.entity.Domain;
 import com.project.utility.HibernateUtil;
 
 public class DomainDaoImpl implements DomainDao {

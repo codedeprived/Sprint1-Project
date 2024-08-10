@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.project.dao.StudentDao;
-import com.project.dto.Student;
+import com.project.entity.Student;
 import com.project.utility.HibernateUtil;
 
 public class StudentDaoImpl implements StudentDao {
@@ -60,7 +60,7 @@ public class StudentDaoImpl implements StudentDao {
 
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
@@ -113,7 +113,6 @@ public class StudentDaoImpl implements StudentDao {
 
 		Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
 		} finally {
 			session.close();
 		}
@@ -121,20 +120,57 @@ public class StudentDaoImpl implements StudentDao {
 	}
 
 	@Override
-	public Student getStudent(int userId) {
+	public Student getStudent(int studentId) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = null;
 		Student student = null;
 		session = sessionFactory.openSession();
 		try {
 
+			String hql = "FROM Student WHERE student_id = :studentid";
+			Query query = session.createQuery(hql);
+			query.setParameter("studentid", studentId);
+
 			try {
-				student = session.get(Student.class, userId);
+				student = (Student) query.getSingleResult();
+
 				if (student != null) {
 					return student;
 				}
 			} catch (Exception e) {
-				System.out.println("Student not found ");
+				System.out.println("student not found :");
+				return null;
+			}
+
+		} catch (
+
+		Exception e) {
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
+	@Override
+	public Student getStudentUsingUserId(int userId) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = null;
+		Student student = null;
+		session = sessionFactory.openSession();
+		try {
+
+			String hql = "FROM Student WHERE user_id = :userid";
+			Query query = session.createQuery(hql);
+			query.setParameter("userid", userId);
+
+			try {
+				student = (Student) query.getSingleResult();
+
+				if (student != null) {
+					return student;
+				}
+			} catch (Exception e) {
+				System.out.println("student not found :");
 				return null;
 			}
 
@@ -146,6 +182,7 @@ public class StudentDaoImpl implements StudentDao {
 			session.close();
 		}
 		return null;
+
 	}
 
 }

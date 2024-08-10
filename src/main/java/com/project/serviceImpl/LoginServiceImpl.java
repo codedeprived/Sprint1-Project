@@ -2,8 +2,8 @@ package com.project.serviceImpl;
 
 import com.project.dao.LoginDao;
 import com.project.daoImpl.LoginDaoImpl;
-import com.project.dto.Admin;
-import com.project.dto.User;
+import com.project.entity.Admin;
+import com.project.entity.User;
 import com.project.service.LoginService;
 
 public class LoginServiceImpl implements LoginService {

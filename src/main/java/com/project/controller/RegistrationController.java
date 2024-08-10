@@ -4,10 +4,10 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
-import com.project.dto.Domain;
-import com.project.dto.Student;
-import com.project.dto.Tutor;
-import com.project.dto.User;
+import com.project.entity.Domain;
+import com.project.entity.Student;
+import com.project.entity.Tutor;
+import com.project.entity.User;
 import com.project.service.DomainService;
 import com.project.service.StudentService;
 import com.project.service.TutorService;
@@ -35,7 +35,6 @@ public class RegistrationController {
 
 		if (uS.searchUser(email)) {
 			System.out.println("User already exists. Please login to continue!");
-			s.close();
 			return;
 		}
 
@@ -53,7 +52,6 @@ public class RegistrationController {
 		if (userCreated) {
 			Tutor tutor = new Tutor();
 			User U = uS.getUser(email);
-			System.out.println(U);
 			List<Domain> domains = dS.showallDomain();
 
 			for (Domain domain : domains) {
@@ -62,7 +60,6 @@ public class RegistrationController {
 
 			System.out.println("Enter Domain ID from available domains:");
 			int domainId = s.nextInt();
-
 			tutor.setUser(U);
 			tutor.setDomainId(domainId);
 			tutor.setAvailabilityStart(LocalTime.parse(availabilityStart));
@@ -75,7 +72,6 @@ public class RegistrationController {
 				uS.deleteUser(U.getUserId());
 				System.out.println("Registration failed. Please try again.");
 			}
-			s.close();
 		}
 	}
 

@@ -1,4 +1,4 @@
-package com.project.dto;
+package com.project.entity;
 
 import java.time.LocalTime;
 
@@ -106,4 +106,15 @@ public class Hire {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "Hire [hireId=" + hireId + ", studentId=" + studentId + ", tutorId=" + tutorId + ", startTime="
+				+ startTime + ", endTime=" + endTime + ", status=" + status + "]";
+	}
+
+	public Hire() {
+		super();
+	}
+
 }

@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.project.dao.DomainDao;
 import com.project.daoImpl.DomainDaoImpl;
-import com.project.dto.Domain;
+import com.project.entity.Domain;
 import com.project.service.DomainService;
 
 public class DomainServiceImpl implements DomainService {

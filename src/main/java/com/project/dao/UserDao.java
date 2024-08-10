@@ -2,7 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
-import com.project.dto.User;
+import com.project.entity.User;
 
 public interface UserDao {
 

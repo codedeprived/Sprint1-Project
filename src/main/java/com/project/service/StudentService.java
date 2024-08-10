@@ -2,7 +2,7 @@ package com.project.service;
 
 import java.util.List;
 
-import com.project.dto.Student;
+import com.project.entity.Student;
 
 public interface StudentService {
 
@@ -16,6 +16,8 @@ public interface StudentService {
 
 	boolean searchStudent(int i);
 
-	Student getStudent(int studentId);
+	Student getStudent(int userId);
+
+	Student getStudentUsingUserId(int userId);
 
 }

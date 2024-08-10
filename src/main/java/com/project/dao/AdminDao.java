@@ -2,7 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
-import com.project.dto.Admin;
+import com.project.entity.Admin;
 
 public interface AdminDao {
 

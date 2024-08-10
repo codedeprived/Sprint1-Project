@@ -7,8 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.project.dao.LoginDao;
-import com.project.dto.Admin;
-import com.project.dto.User;
+import com.project.entity.Admin;
+import com.project.entity.User;
 import com.project.utility.HibernateUtil;
 
 public class LoginDaoImpl implements LoginDao {
@@ -30,7 +30,6 @@ public class LoginDaoImpl implements LoginDao {
 			query.setParameter("password", admin.getPassword());
 
 			Admin result = (Admin) query.getSingleResult();
-			System.out.println(result);
 			if (result != null) {
 				return true;
 			}
@@ -63,7 +62,6 @@ public class LoginDaoImpl implements LoginDao {
 			query.setParameter("password", user.getPassword());
 
 			User result = (User) query.getSingleResult();
-			System.out.println(result);
 			if (result != null) {
 				return true;
 			}
@@ -72,7 +70,6 @@ public class LoginDaoImpl implements LoginDao {
 
 		Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
 		} finally {
 			session.close();
 		}

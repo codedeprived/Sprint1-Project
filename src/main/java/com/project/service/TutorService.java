@@ -2,7 +2,7 @@ package com.project.service;
 
 import java.util.List;
 
-import com.project.dto.Tutor;
+import com.project.entity.Tutor;
 
 public interface TutorService {
 	boolean addTutor(Tutor tutor);
@@ -15,6 +15,8 @@ public interface TutorService {
 
 	boolean searchTutor(int i);
 
-	Tutor getTutor(int tutorId);
+	Tutor getTutor(int userId);
+
+	Tutor getTutorUserTutorId(int tutorId);
 
 }

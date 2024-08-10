@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.project.dao.StudentDao;
 import com.project.daoImpl.StudentDaoImpl;
-import com.project.dto.Student;
+import com.project.entity.Student;
 import com.project.service.StudentService;
 
 public class StudentServiceImpl implements StudentService {
@@ -44,6 +44,12 @@ public class StudentServiceImpl implements StudentService {
 	public Student getStudent(int studentId) {
 
 		return sD.getStudent(studentId);
+	}
+
+	@Override
+	public Student getStudentUsingUserId(int userId) {
+
+		return sD.getStudentUsingUserId(userId);
 	}
 
 }

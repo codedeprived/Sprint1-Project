@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.project.dao.TutorDao;
-import com.project.dto.Tutor;
+import com.project.entity.Tutor;
 import com.project.utility.HibernateUtil;
 
 public class TutorDaoImpl implements TutorDao {
@@ -117,20 +117,55 @@ public class TutorDaoImpl implements TutorDao {
 	}
 
 	@Override
-	public Tutor getTutor(int tutorId) {
+	public Tutor getTutor(int userId) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session session = null;
 		Tutor tutor = null;
 		session = sessionFactory.openSession();
 		try {
 
+			String hql = "FROM Tutor WHERE user_id = :user_id";
+			Query query = session.createQuery(hql);
+			query.setParameter("user_id", userId);
+
 			try {
-				tutor = session.get(Tutor.class, tutorId);
-				if (tutor != null) {
-					return tutor;
-				}
+				tutor = (Tutor) query.getSingleResult();
+				System.out.println(tutor);
+				return tutor;
+
 			} catch (Exception e) {
-				System.out.println("Tutor not found ");
+				System.out.println("Tutor not found :");
+				return null;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return null;
+	}
+
+	@Override
+	public Tutor getTutorUsingTutorId(int tutorId) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = null;
+		Tutor tutor = null;
+		session = sessionFactory.openSession();
+		try {
+
+			String hql = "FROM Tutor WHERE tutor_id = :tutor_id";
+			Query query = session.createQuery(hql);
+			query.setParameter("tutor_id", tutorId);
+
+			try {
+				tutor = (Tutor) query.getSingleResult();
+				return tutor;
+
+			} catch (Exception e) {
+				System.out.println("Tutor not found :");
 				return null;
 			}
 

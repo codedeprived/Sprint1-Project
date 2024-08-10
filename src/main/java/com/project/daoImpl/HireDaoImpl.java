@@ -1,11 +1,15 @@
 package com.project.daoImpl;
 
+import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.project.dao.HireDao;
-import com.project.dto.Hire;
+import com.project.entity.Hire;
 import com.project.utility.HibernateUtil;
 
 public class HireDaoImpl implements HireDao {
@@ -20,15 +24,15 @@ public class HireDaoImpl implements HireDao {
 
 		try {
 			System.out.println(hire);
-			int pk = (int) session.save(hire);
+			session.saveOrUpdate(hire);
+			Hire hired = session.get(Hire.class, hire.getHireId());
 			transaction.commit();
-			if (pk != 0) {
+			if (hired != null) {
 				return true;
 			}
 
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
 		} finally {
 			session.close();
 		}
@@ -40,6 +44,63 @@ public class HireDaoImpl implements HireDao {
 	public boolean hireCancelation(int hireId) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Hire getHireRequest(int tutorId) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = null;
+		Hire hire = null;
+		session = sessionFactory.openSession();
+		try {
+			String hql = "FROM Hire WHERE tutor_id = :tutorid";
+			Query query = session.createQuery(hql);
+			query.setParameter("tutorid", tutorId);
+
+			List<Hire> results = query.getResultList();
+			if (results.isEmpty()) {
+				System.out.println("No records found for tutor_id = " + tutorId);
+				return null;
+			} else {
+				hire = results.get(0);
+				System.out.println(hire);
+				return hire;
+			}
+		} catch (Exception e) {
+			return null;
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+	}
+
+	@Override
+	public Hire getHireStatus(int studentId) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = null;
+		Hire hire = null;
+		session = sessionFactory.openSession();
+		try {
+			String hql = "FROM Hire WHERE student_id = :studentid";
+			Query query = session.createQuery(hql);
+			query.setParameter("studentid", studentId);
+
+			List<Hire> results = query.getResultList();
+			if (results.isEmpty()) {
+				System.out.println("No records found for tutor_id = " + studentId);
+				return null;
+			} else {
+				hire = results.get(0);
+				return hire;
+			}
+		} catch (Exception e) {
+			return null;
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
 	}
 
 }

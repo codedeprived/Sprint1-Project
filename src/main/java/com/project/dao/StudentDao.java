@@ -2,7 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
-import com.project.dto.Student;
+import com.project.entity.Student;
 
 public interface StudentDao {
 	boolean addStudent(Student student);
@@ -13,7 +13,9 @@ public interface StudentDao {
 
 	List<Student> showAllStudent();
 
-	Student getStudent(int userId);
+	Student getStudent(int studentId);
 
 	boolean searchStudent(int userId);
+
+	Student getStudentUsingUserId(int userId);
 }

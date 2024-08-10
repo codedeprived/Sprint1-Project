@@ -3,10 +3,10 @@ package com.project.controller;
 import java.util.List;
 import java.util.Scanner;
 
-import com.project.dto.Admin;
-import com.project.dto.Domain;
-import com.project.dto.Student;
-import com.project.dto.User;
+import com.project.entity.Admin;
+import com.project.entity.Domain;
+import com.project.entity.Student;
+import com.project.entity.User;
 import com.project.service.AdminService;
 import com.project.service.DomainService;
 import com.project.service.StudentService;

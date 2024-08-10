@@ -2,7 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
-import com.project.dto.Domain;
+import com.project.entity.Domain;
 
 public interface DomainDao {
 

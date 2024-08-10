@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.project.dao.TutorDao;
 import com.project.daoImpl.TutorDaoImpl;
-import com.project.dto.Tutor;
+import com.project.entity.Tutor;
 import com.project.service.TutorService;
 
 public class TutorServiceImpl implements TutorService {
@@ -41,9 +41,15 @@ public class TutorServiceImpl implements TutorService {
 	}
 
 	@Override
-	public Tutor getTutor(int tutorId) {
+	public Tutor getTutor(int userId) {
 
-		return tD.getTutor(tutorId);
+		return tD.getTutor(userId);
+	}
+
+	@Override
+	public Tutor getTutorUserTutorId(int tutorId) {
+
+		return tD.getTutorUsingTutorId(tutorId);
 	}
 
 }

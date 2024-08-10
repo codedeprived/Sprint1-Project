@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.project.dao.UserDao;
-import com.project.dto.User;
+import com.project.entity.User;
 import com.project.utility.HibernateUtil;
 
 public class UserDaoImpl implements UserDao {
@@ -22,7 +22,6 @@ public class UserDaoImpl implements UserDao {
 		session = sessionFactory.openSession();
 		transaction = session.beginTransaction();
 		try {
-
 			int pk = (int) session.save(user);
 			transaction.commit();
 			if (pk != 0) {
@@ -31,7 +30,7 @@ public class UserDaoImpl implements UserDao {
 
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
@@ -59,7 +58,7 @@ public class UserDaoImpl implements UserDao {
 
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
@@ -106,15 +105,12 @@ public class UserDaoImpl implements UserDao {
 				return false;
 			}
 
-		} catch (
-
-		Exception e) {
+		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
-		return false;
 	}
 
 	@Override
@@ -146,7 +142,7 @@ public class UserDaoImpl implements UserDao {
 			if (transaction != null) {
 				transaction.rollback();
 			}
-			e.printStackTrace();
+			return null;
 		} finally {
 			if (session != null) {
 				session.close();
@@ -166,8 +162,8 @@ public class UserDaoImpl implements UserDao {
 				System.out.println("No user found with userId " + userId);
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			System.out.println("Error retrieving user with userId " + userId);
+			return null;
 		}
 		return null;
 	}

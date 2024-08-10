@@ -10,14 +10,14 @@
 		<property name="connection.username">root</property>
 		<property name="connection.password">71220011mysql</property>
 		<property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
-		<property name="show_sql">true</property>
-		<property name="format_sql">true</property>
+		<property name="show_sql">false</property>
+		<property name="format_sql">false</property>
 		<property name="hbm2ddl.auto">update</property>
-		<mapping class = "com.project.dto.Admin"/>
-		<mapping class = "com.project.dto.User"/>
-		<mapping class = "com.project.dto.Tutor"/>
-		<mapping class = "com.project.dto.Domain"/>
-		<mapping class = "com.project.dto.Student"/>
+		<mapping class = "com.project.entity.Admin"/>
+		<mapping class = "com.project.entity.User"/>
+		<mapping class = "com.project.entity.Tutor"/>
+		<mapping class = "com.project.entity.Domain"/>
+		<mapping class = "com.project.entity.Student"/>
+		<mapping class = "com.project.entity.Hire"/>
 	</session-factory>
-	
 </hibernate-configuration>

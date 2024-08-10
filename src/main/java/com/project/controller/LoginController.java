@@ -2,8 +2,8 @@ package com.project.controller;
 
 import java.util.Scanner;
 
-import com.project.dto.Admin;
-import com.project.dto.User;
+import com.project.entity.Admin;
+import com.project.entity.User;
 import com.project.service.LoginService;
 import com.project.serviceImpl.LoginServiceImpl;
 
@@ -20,6 +20,9 @@ public class LoginController {
 		String password = sc.next();
 		Admin admin = new Admin(email, password);
 		boolean check = lS.adminCheck(admin);
+		if (!check) {
+			System.out.println("Enter valid credentials : ");
+		}
 		return check;
 	}
 
@@ -32,6 +35,9 @@ public class LoginController {
 
 		User user = new User(email, password);
 		boolean check = lS.userCheck(user);
+		if (!check) {
+			System.out.println("Enter valid Credentials :");
+		}
 		return check;
 	}
 

@@ -178,9 +178,10 @@ public class TutorHireDashboard {
 			System.out.println("*              Tutor Section               *");
 			System.out.println("********************************************");
 			System.out.println("1. Update Your Tutor Details");
-			System.out.println("2. Revoke Tutor Role");
+			System.out.println("2. Delete Tutor profile");
 			System.out.println("3. Show All Students");
-			System.out.println("4. Exit");
+			System.out.println("4. Hire Requests");
+			System.out.println("5. Exit");
 			System.out.print("Select an option: ");
 			optionTutor = s.nextInt();
 			System.out.println("********************************************");
@@ -189,18 +190,22 @@ public class TutorHireDashboard {
 				tutorController.updateTutorDetails();
 				break;
 			case 2:
-				tutorController.revokeTutorRole();
+				tutorController.deleteTutor();
+				;
 				break;
 			case 3:
 				tutorController.showAllStudents();
 				break;
 			case 4:
+				tutorController.hireRequests();
+				break;
+			case 5:
 				System.out.println("Exited from Tutor Section Successfully...");
 				break;
 			default:
 				System.out.println("Invalid option. Please select again.");
 			}
-		} while (optionTutor != 4);
+		} while (optionTutor != 5);
 	}
 
 	private static void studentUtility() {
@@ -216,7 +221,7 @@ public class TutorHireDashboard {
 			System.out.println("*             Student Section              *");
 			System.out.println("********************************************");
 			System.out.println("1. Update Your Student Details");
-			System.out.println("2. Revoke Student Role");
+			System.out.println("2. Delete Student Profile");
 			System.out.println("3. Show All Tutors");
 			System.out.println("4. Exit");
 			System.out.print("Select an option: ");
@@ -250,7 +255,7 @@ public class TutorHireDashboard {
 			System.out.println("********************************************");
 			System.out.println("1. Hire Tutor");
 			System.out.println("2. Cancel Hire");
-			System.out.println("3. Show Previous Hires");
+			System.out.println("3. Show Hire Status");
 			System.out.println("4. Exit");
 			System.out.print("Select an option: ");
 			optionHire = s.nextInt();
@@ -263,7 +268,7 @@ public class TutorHireDashboard {
 				hireController.cancelHire();
 				break;
 			case 3:
-				hireController.showPreviousHires();
+				hireController.showHireStatus();
 				break;
 			case 4:
 				System.out.println("Exited from Hire Section Successfully...");

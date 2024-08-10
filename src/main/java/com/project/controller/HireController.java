@@ -3,12 +3,12 @@ package com.project.controller;
 import java.util.List;
 import java.util.Scanner;
 
-import com.project.dto.Domain;
-import com.project.dto.Hire;
-import com.project.dto.Hire.Status;
-import com.project.dto.Student;
-import com.project.dto.Tutor;
-import com.project.dto.User;
+import com.project.entity.Domain;
+import com.project.entity.Hire;
+import com.project.entity.Hire.Status;
+import com.project.entity.Student;
+import com.project.entity.Tutor;
+import com.project.entity.User;
 import com.project.service.DomainService;
 import com.project.service.HireService;
 import com.project.service.StudentService;
@@ -45,13 +45,18 @@ public class HireController {
 		User userStudent = uS.getUser(email);
 		if (userStudent != null) {
 			Student student = sS.getStudent(userStudent.getUserId());
+			System.out.println(student);
 			if (student != null) {
-				Hire hire = new Hire(tutorId, student.getStudentId(), tutor.getAvailabilityStart(),
+
+				Hire hire = new Hire(student.getStudentId(), tutorId, tutor.getAvailabilityStart(),
 						tutor.getAvailabilityEnd(), Status.PENDING);
+				System.out.println(hire);
 				boolean request = hS.hireRequest(hire);
 				if (request) {
 					System.out.println("Request is sent Please wait to check Status ");
 				}
+			} else {
+				System.out.println("Somethign went wrong ");
 			}
 		}
 	}
@@ -61,8 +66,33 @@ public class HireController {
 
 	}
 
-	public void showPreviousHires() {
-		// TODO Auto-generated method stub
+	public void showHireStatus() {
+		System.out.println("Enter your email ");
+		String email = sc.next();
+		User user = uS.getUser(email);
+
+		if (user != null) {
+			Student student = sS.getStudentUsingUserId(user.getUserId());
+			if (student != null) {
+				Hire hire = hS.getHireStatus(student.getStudentId());
+				if (hire != null) {
+					Tutor tutor = tS.getTutorUserTutorId(hire.getTutorId());
+
+					System.out.println(" Tutor name : " + tutor.getUser().getUsername() + "\ntutor availabilty "
+							+ tutor.getAvailabilityStart() + "\n tutor email: " + tutor.getUser().getEmail()
+							+ "\nStatus : " + hire.getStatus());
+				} else {
+					System.out.println("no hiring record found ");
+					return;
+				}
+			} else {
+				System.out.println("student not found :");
+				return;
+			}
+		} else {
+			System.out.println("user not foudn : ");
+			return;
+		}
 
 	}
 

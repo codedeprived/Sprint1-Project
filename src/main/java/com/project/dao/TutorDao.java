@@ -2,7 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
-import com.project.dto.Tutor;
+import com.project.entity.Tutor;
 
 public interface TutorDao {
 	boolean addTutor(Tutor tutor);
@@ -15,5 +15,7 @@ public interface TutorDao {
 
 	boolean searchUser(int userId);
 
-	Tutor getTutor(int tutorId);
+	Tutor getTutor(int userId);
+
+	Tutor getTutorUsingTutorId(int tutorId);
 }

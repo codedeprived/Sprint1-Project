@@ -1,4 +1,4 @@
-package com.project.dto;
+package com.project.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,6 +51,11 @@ public class Student {
 
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
+	}
+
+	@Override
+	public String toString() {
+		return "Student [studentId=" + studentId + ", user=" + user + "]";
 	}
 
 }

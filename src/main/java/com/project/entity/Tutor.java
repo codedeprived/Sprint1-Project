@@ -1,4 +1,4 @@
-package com.project.dto;
+package com.project.entity;
 
 import java.time.LocalTime;
 

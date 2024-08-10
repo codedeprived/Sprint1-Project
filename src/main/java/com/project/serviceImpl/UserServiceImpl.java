@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.project.dao.UserDao;
 import com.project.daoImpl.UserDaoImpl;
-import com.project.dto.User;
+import com.project.entity.User;
 import com.project.service.UserService;
 
 public class UserServiceImpl implements UserService {

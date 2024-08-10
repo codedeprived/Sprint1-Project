@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import com.project.dao.AdminDao;
-import com.project.dto.Admin;
+import com.project.entity.Admin;
 import com.project.utility.HibernateUtil;
 
 public class AdminDaoImpl implements AdminDao {
@@ -30,7 +30,7 @@ public class AdminDaoImpl implements AdminDao {
 
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
@@ -58,7 +58,7 @@ public class AdminDaoImpl implements AdminDao {
 
 		} catch (Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
@@ -97,7 +97,6 @@ public class AdminDaoImpl implements AdminDao {
 
 		Exception e) {
 			transaction.rollback();
-			e.printStackTrace();
 		} finally {
 			session.close();
 		}
