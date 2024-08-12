@@ -10,7 +10,7 @@ public interface UserService {
 
 	boolean deleteUser(int userId);
 
-	boolean updateUser(int userID);
+	boolean updateUser(int userID, User user);
 
 	List<User> showAllUser();
 
@@ -19,4 +19,5 @@ public interface UserService {
 	User getUser(String email);
 
 	User getUser(int UserId);
+
 }

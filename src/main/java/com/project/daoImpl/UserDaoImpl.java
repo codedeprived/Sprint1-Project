@@ -66,9 +66,28 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public boolean updateUser(int userID) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean updateUser(int userID, User user) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Transaction transaction = null;
+		Session session = sessionFactory.openSession();
+		transaction = session.beginTransaction();
+		try {
+			User prevUser = session.get(User.class, userID);
+
+			prevUser.setEmail(user.getEmail());
+			prevUser.setPassword(user.getPassword());
+			prevUser.setUsername(user.getUsername());
+
+			session.update(prevUser);
+			transaction.commit();
+			return true;
+		} catch (Exception e) {
+			transaction.rollback();
+			System.out.println("Error retrieving user with userId " + userID);
+			return false;
+		} finally {
+			session.close();
+		}
 	}
 
 	@Override

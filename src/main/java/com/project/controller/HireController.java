@@ -3,7 +3,6 @@ package com.project.controller;
 import java.util.List;
 import java.util.Scanner;
 
-import com.project.entity.Domain;
 import com.project.entity.Hire;
 import com.project.entity.Hire.Status;
 import com.project.entity.Student;
@@ -32,19 +31,18 @@ public class HireController {
 		List<Tutor> tutors = tS.showallTutors();
 		for (Tutor tutor : tutors) {
 			User user = tutor.getUser();
-			Domain domain = dS.searchDomain(tutor.getDomainId());
 			System.out.println("Tutor id : " + tutor.getTutorId() + " Tutor Name : " + "" + user.getUsername()
-					+ " Email : " + user.getEmail() + " Domain Name : " + domain.getDomainname());
+					+ " Email : " + user.getEmail() + " Domain Name : " + tutor.getDomain().getDomainname());
 		}
 		System.out.println("Select Tutor to Hire :");
 		System.out.println("Tutor ID : ");
 		int tutorId = sc.nextInt();
-		Tutor tutor = tS.getTutor(tutorId);
+		Tutor tutor = tS.getTutorUserTutorId(tutorId);
 		System.out.println("Enter your email to confirm Hiring : ");
 		String email = sc.next();
 		User userStudent = uS.getUser(email);
 		if (userStudent != null) {
-			Student student = sS.getStudent(userStudent.getUserId());
+			Student student = sS.getStudentUsingUserId(userStudent.getUserId());
 			System.out.println(student);
 			if (student != null) {
 
@@ -62,7 +60,28 @@ public class HireController {
 	}
 
 	public void cancelHire() {
-		// TODO Auto-generated method stub
+		System.out.println("Enter you email:");
+		String email = sc.next();
+		User user = uS.getUser(email);
+		if (user != null) {
+			Student student = sS.getStudentUsingUserId(user.getUserId());
+			if (student == null) {
+				System.out.println("cannot find student with email " + email);
+				return;
+			}
+			boolean cancelHire = hS.hireCancelation(student.getStudentId());
+
+			if (cancelHire) {
+				System.out.println("hire request withdrawn: ");
+				return;
+			} else {
+				System.out.println("failed to delete request: ");
+				return;
+			}
+		} else {
+			System.out.println("enter valid email address : ");
+			return;
+		}
 
 	}
 

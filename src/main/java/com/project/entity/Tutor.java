@@ -30,8 +30,9 @@ public class Tutor {
 	@Column(name = "availability_end", nullable = false)
 	private LocalTime availabilityEnd;
 
-	@Column(name = "domain_id")
-	private int domainId;
+	@OneToOne
+	@JoinColumn(name = "domain_id", referencedColumnName = "domain_id")
+	private Domain domain;
 
 	public Tutor() {
 		super();
@@ -45,26 +46,17 @@ public class Tutor {
 		this.user = user;
 	}
 
-	public Tutor(int tutorId, User user, LocalTime availabilityStart, LocalTime availabilityEnd, int domainId) {
-		super();
-		this.tutorId = tutorId;
-		this.user = user;
-		this.availabilityStart = availabilityStart;
-		this.availabilityEnd = availabilityEnd;
-		this.domainId = domainId;
-	}
-
-	public Tutor(User user, LocalTime availabilityStart, LocalTime availabilityEnd, int domainId) {
-		super();
-		this.user = user;
-		this.availabilityStart = availabilityStart;
-		this.availabilityEnd = availabilityEnd;
-		this.domainId = domainId;
-	}
-
 	// Getters and Setters
 	public int getTutorId() {
 		return tutorId;
+	}
+
+	public Domain getDomain() {
+		return domain;
+	}
+
+	public void setDomain(Domain domain) {
+		this.domain = domain;
 	}
 
 	public void setTutorId(int tutorId) {
@@ -87,17 +79,27 @@ public class Tutor {
 		this.availabilityEnd = availabilityEnd;
 	}
 
-	public int getDomainId() {
-		return domainId;
+	public Tutor(int tutorId, User user, LocalTime availabilityStart, LocalTime availabilityEnd, Domain domain) {
+		super();
+		this.tutorId = tutorId;
+		this.user = user;
+		this.availabilityStart = availabilityStart;
+		this.availabilityEnd = availabilityEnd;
+		this.domain = domain;
 	}
 
-	public void setDomainId(int domainId) {
-		this.domainId = domainId;
+	public Tutor(User user, LocalTime availabilityStart, LocalTime availabilityEnd, Domain domain) {
+		super();
+		this.user = user;
+		this.availabilityStart = availabilityStart;
+		this.availabilityEnd = availabilityEnd;
+		this.domain = domain;
 	}
 
 	@Override
 	public String toString() {
-		return "Tutor [tutorId=" + tutorId + ", availabilityStart=" + availabilityStart + ", availabilityEnd="
-				+ availabilityEnd + ", domainId=" + domainId + "]";
+		return "Tutor [tutorId=" + tutorId + ", user=" + user + ", availabilityStart=" + availabilityStart
+				+ ", availabilityEnd=" + availabilityEnd + ", domain=" + domain + "]";
 	}
+
 }

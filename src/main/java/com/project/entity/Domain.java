@@ -65,7 +65,7 @@ public class Domain {
 
 	@Override
 	public String toString() {
-		return "Domain [domainId=" + domainId + ", domainname=" + domainname + ", description=" + description + "]";
+		return " domainname=" + domainname + "]";
 	}
 
 }

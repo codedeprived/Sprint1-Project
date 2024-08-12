@@ -24,13 +24,6 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public boolean updateUser(int userID) {
-		boolean updated = uD.updateUser(userID);
-
-		return updated;
-	}
-
-	@Override
 	public List<User> showAllUser() {
 		List<User> users = uD.showAllUser();
 
@@ -53,6 +46,11 @@ public class UserServiceImpl implements UserService {
 	public User getUser(int UserId) {
 
 		return uD.getUser(UserId);
+	}
+
+	@Override
+	public boolean updateUser(int userID, User user) {
+		return uD.updateUser(userID, user);
 	}
 
 }

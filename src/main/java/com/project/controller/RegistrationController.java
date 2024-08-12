@@ -60,8 +60,9 @@ public class RegistrationController {
 
 			System.out.println("Enter Domain ID from available domains:");
 			int domainId = s.nextInt();
+			Domain setDomain = dS.searchDomain(domainId);
 			tutor.setUser(U);
-			tutor.setDomainId(domainId);
+			tutor.setDomain(setDomain);
 			tutor.setAvailabilityStart(LocalTime.parse(availabilityStart));
 			tutor.setAvailabilityEnd(LocalTime.parse(availabilityEnd));
 

@@ -25,7 +25,6 @@ public class TutorController {
 	Scanner sc = new Scanner(System.in);
 
 	public void updateTutorDetails() {
-		//
 
 	}
 

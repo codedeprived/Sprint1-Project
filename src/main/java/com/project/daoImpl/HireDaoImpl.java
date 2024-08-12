@@ -41,9 +41,37 @@ public class HireDaoImpl implements HireDao {
 	}
 
 	@Override
-	public boolean hireCancelation(int hireId) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean hireCancelation(int studentId) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Transaction transaction = null;
+		Session session = null;
+		boolean isDeleted = false;
+
+		try {
+			session = sessionFactory.openSession();
+			transaction = session.beginTransaction();
+
+			String hql = "DELETE FROM Hire WHERE studentId = :studentId";
+			Query query = session.createQuery(hql);
+			query.setParameter("studentId", studentId);
+
+			int result = query.executeUpdate();
+			transaction.commit();
+
+			if (result > 0) {
+				isDeleted = true;
+			}
+		} catch (Exception e) {
+			if (transaction != null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		} finally {
+			if (session != null) {
+				session.close();
+			}
+		}
+		return isDeleted;
 	}
 
 	@Override
