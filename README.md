@@ -1,65 +1,68 @@
 # WebApp-Hire-A-Tutor-For-Free
-# Collaborative Learning Platform
+## Collaborative Learning Platform
 
-## Overview
-This project is a collaborative learning platform where users can post their doubts and get help from other users. Users who clear doubts receive points that increase their ranking on the platform.
+### Overview
+This project is a collaborative learning platform where users can post their doubts and get help from other users. Users who clear doubts receive points that increase their ranking on the platform. Currently, the project is developed as a command-line application using Core Java, MVC architecture, Hibernate, and MySQL.
 
-## Features
+### PS: This is work in program and technologies involed are subjected to change acc to me and my will , spring integration is postponed as i started playing about with servlets and jsp would make views based on these front-end stack , later integrates towards spring core -> spring MVC -> spring- boot.
+-> currently exploreing JavaScripts based backend frameworks like nodejs , Expressjs , 
+-> would Shift from MYSQL (Current ) to MongoDb.
+### Features
 - User Registration and Profiles
 - Posting Doubts
 - Matching Users
-- Creating Meeting Rooms
 - Clearing Doubts and Points System
 
-## Tech Stack
-- **Frontend:** Angular/React.js, HTML, CSS, JavaScript
-- **Backend:** Spring Boot with Spring MVC and Spring Security
-- **Database:** MySQL or PostgreSQL with Hibernate and JPA
-- **Authentication:** JWT or OAuth
-- **Video Conferencing API:** Google Meet API, Zoom API
-- **Hosting:** AWS, Heroku, or DigitalOcean
+### Tech Stack
+- **Backend:** Core Java, MVC, Hibernate, JPA
+- **Database:** MySQL
+- **Frontend (Future Goals):** HTML, CSS, JavaScript
+- **Video Conferencing API (Future Goals):** Google Meet API, Zoom API
+- **Hosting (Future Goals):** AWS, Heroku, or DigitalOcean
+
+## Current Status: Command-Line Based Application
+The project is currently implemented as a command-line application using Core Java, MVC architecture, Hibernate, and MySQL. Below are the completed tasks and the goals for integrating a web interface.
 
 ## Tasks
 
 ### 1. Planning and Design
-- [ ] Define overall architecture and technologies
-- [ ] Design user interface and user experience
-- [ ] Create wireframes and prototypes
+- [x] Define overall architecture and technologies
+- [x] Design user interface and user experience (for command line)
+- [ ] Create wireframes and prototypes (for web interface)
 
 ### 2. Backend Development
-- [ ] Set up a Spring Boot project
-- [ ] Create database schema for users, doubts, meetings, and points using Hibernate and JPA
-- [ ] Develop RESTful APIs for communication between frontend and backend
+- [x] Set up the project using Core Java and MVC
+- [x] Create database schema for users, doubts, meetings, and points using Hibernate and JPA
+- [x] Develop core functionalities for user registration, doubt posting, and matching users (command-line based)
 
-### 3. Frontend Development
-- [ ] Set up a frontend project using Angular/React
-- [ ] Develop components for user registration, login, doubt posting, and profile viewing
+### 3. Frontend Integration (Future Goals)
+- [ ] Integrate HTML, CSS, and JavaScript for the web interface
+- [ ] Update controllers to handle web requests and responses
+- [ ] Develop web pages for user registration, login, doubt posting, and profile viewing
 - [ ] Implement responsive design for accessibility on various devices
 
 ### 4. User Authentication
-- [ ] Implement user registration and login endpoints in Spring Boot
-- [ ] Secure authentication using Spring Security and JWT or OAuth
+- [x] Implement user registration and login functionalities (command-line based)
+- [ ] Secure web-based authentication (future goal)
 
 ### 5. Doubt Posting and Matching
-- [ ] Implement functionality for posting doubts with categories
-- [ ] Develop a matching algorithm to match users with suitable helpers
-- [ ] Create API endpoints for doubt posting and matching
+- [x] Implement functionality for posting doubts with categories (command-line based)
+- [x] Develop a matching algorithm to match users with suitable helpers
+- [x] Create mechanisms for doubt clearance and point allocation
 
-### 6. Meeting Room Integration
-- [ ] Integrate Google Meet API for creating meeting links
+### 6. Meeting Room Integration (Future Goals)
+- [ ] Integrate Google Meet API or other conferencing tools for creating meeting links
 - [ ] Provide users with the option to choose internal or external communication platforms
 
 ### 7. Points and Ranking System
-- [ ] Create an API endpoint for confirming doubt clearance
-- [ ] Update user points and ranking in the database
-- [ ] Display points and rankings on user profiles
+- [x] Create functionality for confirming doubt clearance and updating user points (command-line based)
+- [ ] Display points and rankings on web user profiles
 
 ### 8. Testing
-- [ ] Conduct unit testing for backend services
-- [ ] Conduct unit testing for frontend components
-- [ ] Perform end-to-end testing to ensure all features work seamlessly
+- [x] Conduct unit testing for backend services (command-line based)
+- [ ] Perform testing on the web interface and integration with backend
 
-### 9. Deployment
+### 9. Deployment (Future Goals)
 - [ ] Deploy the application to a cloud service (AWS, Heroku, or DigitalOcean)
 - [ ] Ensure scalability and handle potential user load
 
@@ -71,9 +74,8 @@ This project is a collaborative learning platform where users can post their dou
 
 ### Prerequisites
 - Java Development Kit (JDK)
-- Node.js and npm
-- MySQL or PostgreSQL
-- Google Cloud account for Google Meet API
+- MySQL
+- Basic knowledge of HTML, CSS, and JavaScript for frontend integration
 
 ### Setting Up Backend
 1. Clone the repository
