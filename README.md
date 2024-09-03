@@ -4,9 +4,12 @@
 ### Overview
 This project is a collaborative learning platform where users can post their doubts and get help from other users. Users who clear doubts receive points that increase their ranking on the platform. Currently, the project is developed as a command-line application using Core Java, MVC architecture, Hibernate, and MySQL.
 
-### PS: This is work in program and technologies involed are subjected to change acc to me and my will , spring integration is postponed as i started playing about with servlets and jsp would make views based on these front-end stack , later integrates towards spring core -> spring MVC -> spring- boot.
+### 
+PS: This project is currently work in progress and technologies involed are subjected to change acc to me and my will , spring integration is postponed as i started playing about with servlets and jsp would make views based on these front-end stack , later integrates towards spring core -> spring MVC -> spring- boot.
 -> currently exploreing JavaScripts based backend frameworks like nodejs , Expressjs , 
 -> would Shift from MYSQL (Current ) to MongoDb.
+
+
 ### Features
 - User Registration and Profiles
 - Posting Doubts
