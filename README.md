@@ -80,4 +80,4 @@ The project is currently implemented as a command-line application using Core Ja
 ### Setting Up Backend
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/learning-platform.git
+   git clone https://github.com/codedeprived/Sprint1-Project.git
